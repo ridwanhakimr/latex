@@ -3,7 +3,7 @@
 % Universitas Telkom
 
 % Document Class
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper,english]{article}
 
 % Packages
 \usepackage[utf8]{inputenc}
@@ -12,11 +12,15 @@
 \usepackage{courier}  % Courier for monospace
 \usepackage{helvet}   % Helvetica for sans-serif
 \usepackage{amsmath}
-\usepackage[english,indonesian]{babel}
+\usepackage{babel}
+\babelprovide[import, main]{english}
+\babelprovide[import]{indonesian}
+\selectlanguage{english}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{graphicx}
+\usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -24,10 +28,10 @@
 \usepackage{enumitem}
 \usepackage{parskip}
 \usepackage{fancyhdr}
-\usepackage{tocloft}
 \usepackage{tabularx}
 \usepackage{longtable}
 \usepackage{ragged2e}  % For better text justification in bibliography
+\usepackage{csquotes}  % Recommended by biblatex for quotation handling
 
 % Page Setup
 \geometry{
@@ -95,14 +99,13 @@
 % Subsection numbering format
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 
-% Custom Commands
+% Custom Commands (use @ internal commands)
+\makeatletter
 \newcommand{\myTitle}[1]{\def\@myTitle{#1}}
 \newcommand{\myName}[1]{\def\@myName{#1}}
 \newcommand{\myNIM}[1]{\def\@myNIM{#1}}
 \newcommand{\myYear}[1]{\def\@myYear{#1}}
 
-% Redefine title
-\makeatletter
 % Initialize default values
 \def\@myTitle{Judul Penelitian}
 \def\@myNIM{303012510004}
@@ -189,7 +192,7 @@
 
 % Bibliography Style - APA-like with BibTeX
 \usepackage[
-    backend=bibtex,   % Menggunakan BibTeX (biber tidak berfungsi di sistem ini)
+    backend=biber,    % Menggunakan Biber (lebih modern dari BibTeX)
     style=authoryear, % Author-year citation style (APA-like)
     sorting=nyt,      % Sort by name, year, title
     maxbibnames=99,   % Tampilkan semua nama penulis

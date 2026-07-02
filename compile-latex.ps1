@@ -21,9 +21,9 @@ else {
     Write-Host "      ! Selesai dengan warning" -ForegroundColor Yellow
 }
 
-# Menjalankan BibTeX
-Write-Host "[2/4] Menjalankan bibtex..." -ForegroundColor Yellow
-bibtex "$TexFile" | Out-Null
+# Menjalankan Biber
+Write-Host "[2/4] Menjalankan biber..." -ForegroundColor Yellow
+biber "$TexFile" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "      OK Berhasil" -ForegroundColor Green
 }
